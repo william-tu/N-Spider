@@ -50,5 +50,5 @@ class DoubanSpider(scrapy.Spider):
             else:
                 l['image_url'] = ''
             l['source_from'] = u'豆瓣'
-            l['add_time'] = datetime.utcnow()
+            l['add_time'] = datetime.now()
             yield l

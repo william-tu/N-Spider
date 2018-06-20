@@ -43,11 +43,8 @@ class ZhihuSpider(scrapy.Spider):
         l['message_url'] = response.url
         l['data_id'] = get_md5(l['message_url'])
         l['image_url'] = response.xpath('//div[@class="img-wrap"]/img/@src').extract()[0]
-        l['add_time'] = datetime.utcnow()
+        l['add_time'] = datetime.now()
         l['source_from'] = u'知乎日报网'
         content = ''.join(response.xpath('//div[@class="content"]/p/text()').extract())
-        if len(content) > 100:
-            l['content'] = content[:100]
-        else:
-            l['content'] = content
+        l['content'] = content
         yield l

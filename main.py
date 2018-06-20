@@ -11,4 +11,3 @@ execute(['scrapy','crawlall'])
 #execute(['scrapy','crawl','zhihu'])
 #execute(['scrapy','crawl','douban'])
 #execute(['scrapy','crawl','guoke'])
-

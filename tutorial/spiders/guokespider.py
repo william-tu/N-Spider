@@ -47,7 +47,7 @@ class GuokeSpider(scrapy.Spider):
             l['image_url'] = selector.xpath('//a[@href="' + l['message_url'] + '"]/img/@src')[0] if selector.xpath(
                 '//a[@href="' + l['message_url'] + '"]/img/@src') else ''
             l['content'] = selector.xpath('//p[@class="article-summary"]/text()')[0]
-            l['add_time'] = datetime.utcnow()
+            l['add_time'] = datetime.now()
             l['source_from'] = u'果壳网'
 
             yield l
