@@ -102,11 +102,6 @@ COMMANDS_MODULE = 'tutorial.commands'
 # REDIS_PARAMS = {'host':'redis','decode_responses':False}
 # MONGO_URL = 'mongo:27017'
 
-# for not docker db config
-MONGO_URI = 'mongodb://localhost:27017'
-
-MONGO_DATABASE = 'spider'
-
 MYSQL_CONFIG = {"host": "localhost", "user": "root", "password": "", "db": "spider", "charset": "utf8mb4"}
 
 CHROME_PATH = r"C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe "

@@ -5,12 +5,16 @@ from datetime import datetime
 import scrapy
 from lxml import etree
 from scrapy import signals
+from scrapy_redis.spiders import RedisCrawlSpider
 
 from ..items import ZhihuItem
 from ..tools.common import get_md5
 
 
-class ZhihuSpider(scrapy.Spider):
+class ZhihuSpider(RedisCrawlSpider):
+    '''
+    redis-cli lpush zhihu:start_urls 'http://daily.zhihu.com'
+    '''
     name = 'zhihu'
     allowed_domains = ['daily.zhihu.com']
     start_urls = [
@@ -37,7 +41,6 @@ class ZhihuSpider(scrapy.Spider):
                                  callback=self.parse_content)
 
     def parse_content(self, response):
-        print response
         l = ZhihuItem()
         l['title'] = response.xpath('//h1[@class="headline-title"]/text()').extract()[0]
         l['message_url'] = response.url
@@ -47,4 +50,5 @@ class ZhihuSpider(scrapy.Spider):
         l['source_from'] = u'知乎日报网'
         content = ''.join(response.xpath('//div[@class="content"]/p/text()').extract())
         l['content'] = content
+
         yield l
