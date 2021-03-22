@@ -1,5 +1,5 @@
 
-# N_spider
+# N_spider 项目已迁移到[Daily](https://github.com/william-tu/Daily)
 
 
 ### 1. 技术栈
